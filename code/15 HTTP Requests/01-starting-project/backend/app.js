@@ -3,6 +3,8 @@ import fs from 'node:fs/promises';
 import bodyParser from 'body-parser';
 import express from 'express';
 
+const sleep = ms => new Promise(res => setTimeout(res, ms));
+
 const app = express();
 
 app.use(express.static('images'));
@@ -22,6 +24,8 @@ app.get('/places', async (req, res) => {
   const fileContent = await fs.readFile('./data/places.json');
 
   const placesData = JSON.parse(fileContent);
+
+  await sleep(2000);
 
   res.status(200).json({ places: placesData });
 });
