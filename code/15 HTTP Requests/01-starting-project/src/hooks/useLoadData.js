@@ -4,6 +4,8 @@ export default function useLoadData(fetchDataCallback, initialState, settings) {
     const [state, setState] = useState(initialState);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    //test commit
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
